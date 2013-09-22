@@ -15,14 +15,14 @@ myData = {
     },
     'bye':{}
 }
-
+structure = smc.getStructure()
 @route('/')
 def beginCom():
     return template('basicD3')
 
 @route('/structure')
 def setupFxns():
-    return json.dumps(smc.getStructure())
+    return json.dumps(structure)
 
 @route('/data')
 def sendLogs():
