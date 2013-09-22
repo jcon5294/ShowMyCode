@@ -52,17 +52,17 @@ $.get('/structure', function(ajaxData){
     	{
     		var newIndex = (qIndex + queue.length - 1)% queue.length;
     		var checkName =queue[qIndex].name;
-    		if(queue[newIndex].isBegin)
+    		if(queue[qIndex].isBegin)
     			progStack.pop();
     		else
     			progStack.push(queue[qIndex].name);
     		while(checkName=== queue[newIndex].name)
     		{
     			newIndex = (newIndex + queue.length - 1)% queue.length;
-	    		if(queue[newIndex].isBegin)
+	    		if(queue[(newIndex + 1)% queue.length].isBegin)
 	    			progStack.pop();
 	    		else
-	    			progStack.push(queue[(qIndex + 1)% queue.length].name);
+	    			progStack.push(queue[(newIndex + 1)% queue.length].name);
     		}
     		qIndex = newIndex;
     	}
